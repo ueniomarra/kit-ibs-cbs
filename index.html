@@ -8,6 +8,30 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3286774244830105');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'Kit IBS e CBS - Reforma Tributaria 2026',
+  content_category: 'curso',
+  content_ids: ['kit-ibs-cbs'],
+  content_type: 'product',
+  value: 197.00,
+  currency: 'BRL'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3286774244830105&ev=PageView&noscript=1"/></noscript>
+<!-- Fim Meta Pixel -->
+
 <style>
 /* ─── RESET & BASE ─────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -42,12 +66,43 @@ body{font-family:'DM Sans',sans-serif;background:#05080F;color:#E8EDF5;overflow-
 .container{max-width:960px;margin:0 auto;padding:0 24px}
 .container-wide{max-width:1100px;margin:0 auto;padding:0 24px}
 
+/* ─── STICKY HEADER ──────────────────────────────── */
+.sticky-header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(5,8,15,.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--borda);
+  padding:10px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  transform:translateY(-100%);transition:transform .4s ease;
+}
+.sticky-header.visible{transform:translateY(0)}
+.sticky-header .sh-titulo{
+  font-family:'DM Mono',monospace;font-size:12px;
+  color:var(--ouro-cl);letter-spacing:1px;
+}
+.sticky-header .sh-preco{
+  font-family:'Playfair Display',serif;font-size:18px;
+  font-weight:900;color:var(--ouro-cl);
+}
+.sticky-header .btn-sticky{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--grad-ouro);color:#0A0D15;
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;
+  padding:10px 22px;border-radius:4px;text-decoration:none;
+  white-space:nowrap;
+}
+@media(max-width:600px){
+  .sticky-header .sh-titulo{display:none}
+  .sticky-header .sh-preco{font-size:15px}
+}
+
 /* ─── BARRA TOPO ─────────────────────────────────── */
 .topo{
   background:linear-gradient(90deg,var(--verm) 0%,#B91C1C 100%);
   padding:10px 20px;text-align:center;
   font-family:'DM Mono',monospace;font-size:13px;font-weight:500;
   letter-spacing:.5px;position:relative;overflow:hidden;
+  margin-top:0;
 }
 .topo::before{
   content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
@@ -121,6 +176,27 @@ body{font-family:'DM Sans',sans-serif;background:#05080F;color:#E8EDF5;overflow-
   margin-bottom:44px;
   font-style:italic;
 }
+
+/* SOCIAL PROOF HERO */
+.hero-social-proof{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin-bottom:28px;flex-wrap:wrap;
+}
+.hsp-avatares{display:flex}
+.hsp-avatar{
+  width:32px;height:32px;border-radius:50%;
+  border:2px solid var(--bg);
+  background:linear-gradient(135deg,#C9A84C,#8B6914);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#0A0D15;
+  margin-left:-8px;
+}
+.hsp-avatar:first-child{margin-left:0}
+.hsp-texto{
+  font-size:13px;color:rgba(255,255,255,.6);
+  font-family:'DM Mono',monospace;
+}
+.hsp-texto strong{color:var(--verde-cl)}
 
 .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:16px}
 
@@ -467,6 +543,41 @@ body{font-family:'DM Sans',sans-serif;background:#05080F;color:#E8EDF5;overflow-
 }
 .cta-mid p{font-size:17px;color:var(--txt2);max-width:560px;margin:0 auto 36px;line-height:1.7}
 
+/* ─── DEPOIMENTOS ────────────────────────────────── */
+.depo-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;margin-top:52px;
+}
+.depo-card{
+  background:var(--card2);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:28px;
+  position:relative;
+  transition:transform .2s;
+}
+.depo-card:hover{transform:translateY(-4px)}
+.depo-aspas{
+  font-family:'Playfair Display',serif;font-size:64px;font-weight:900;
+  color:rgba(201,168,76,.15);line-height:.8;margin-bottom:12px;
+}
+.depo-texto{
+  font-size:14px;line-height:1.75;color:rgba(255,255,255,.8);
+  margin-bottom:20px;font-style:italic;
+}
+.depo-autor{
+  display:flex;align-items:center;gap:12px;
+}
+.depo-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--ouro),var(--ouro-esc));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:16px;font-weight:900;
+  color:#0A0D15;flex-shrink:0;
+}
+.depo-nome{font-size:13px;font-weight:600;color:var(--txt)}
+.depo-cargo{font-size:11px;color:var(--txt2);font-family:'DM Mono',monospace;margin-top:2px}
+.depo-estrelas{color:#FBBF24;font-size:12px;margin-bottom:12px;letter-spacing:2px}
+
 /* ─── PARA QUEM ──────────────────────────────────── */
 .pq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--borda);border-radius:12px;overflow:hidden;margin-top:52px}
 @media(max-width:600px){.pq-grid{grid-template-columns:1fr}}
@@ -601,8 +712,8 @@ footer{
 
 /* ─── FLOAT ──────────────────────────────────────── */
 .float-btn{
-  position:fixed;bottom:28px;right:28px;z-index:999;display:block;
-  }
+  position:fixed;bottom:28px;right:28px;z-index:999;display:none;
+}
 .float-btn a{
   display:flex;align-items:center;gap:8px;
   background:linear-gradient(135deg,#C9A84C,#E8C96A);
@@ -629,11 +740,18 @@ footer{
   .valor-stack{flex-direction:column;align-items:center;text-align:center}
   .bonus-grid{grid-template-columns:1fr}
   .planilha-stats{justify-content:center}
+  .depo-grid{grid-template-columns:1fr}
 }
 </style>
-<script src="/pixel.js"></script>
 </head>
 <body>
+
+<!-- STICKY HEADER -->
+<div class="sticky-header" id="stickyHeader">
+  <span class="sh-titulo">KIT IBS E CBS 2026</span>
+  <span class="sh-preco">R$ 197</span>
+  <a href="https://pay.kiwify.com.br/nQ7G0Ae" class="btn-sticky" id="stickyBtn">GARANTIR AGORA →</a>
+</div>
 
 <!-- BARRA URGÊNCIA -->
 <div class="topo">
@@ -657,9 +775,7 @@ footer{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     HERO
-══════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-noise"></div>
   <div class="container">
@@ -683,9 +799,21 @@ footer{
       </p>
       <p class="hero-sub">Este kit foi feito para você não ser surpreendido.</p>
 
+      <!-- SOCIAL PROOF -->
+      <div class="hero-social-proof">
+        <div class="hsp-avatares">
+          <div class="hsp-avatar">M</div>
+          <div class="hsp-avatar">C</div>
+          <div class="hsp-avatar">R</div>
+          <div class="hsp-avatar">A</div>
+          <div class="hsp-avatar">+</div>
+        </div>
+        <span class="hsp-texto">Mais de <strong>200 empresários e contadores</strong> já se prepararam</span>
+      </div>
+
       <div class="hero-cta-group">
         <a href="#oferta" class="btn-primary">
-          QUERO ME PREPARAR AGORA
+          QUERO ME PROTEGER DA REFORMA
           <span class="arrow">→</span>
         </a>
         <a href="#o-que-inclui" class="btn-secondary">
@@ -720,9 +848,7 @@ footer{
 
 <div class="div-line"></div>
 
-<!-- ══════════════════════════════════════════
-     A DOR
-══════════════════════════════════════════ -->
+<!-- A DOR -->
 <section class="sec sec-darker">
   <div class="container">
     <div class="reveal">
@@ -815,9 +941,7 @@ footer{
 
 <div class="div-line"></div>
 
-<!-- ══════════════════════════════════════════
-     CTA 1
-══════════════════════════════════════════ -->
+<!-- CTA 1 -->
 <div class="cta-mid">
   <div class="container">
     <h2 class="reveal">
@@ -826,14 +950,12 @@ footer{
     </h2>
     <p class="reveal">Preenche seus dados, ela entrega o número exato. Sem depender de contador. Sem estimativa. O impacto real do seu negócio.</p>
     <a href="#oferta" class="btn-primary reveal" style="display:inline-flex;width:auto">
-      QUERO CALCULAR MEU IMPACTO <span class="arrow">→</span>
+      CALCULAR MEU IMPACTO AGORA <span class="arrow">→</span>
     </a>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     O QUE INCLUI
-══════════════════════════════════════════ -->
+<!-- O QUE INCLUI -->
 <section class="sec sec-darker" id="o-que-inclui">
   <div class="container">
     <div class="reveal">
@@ -912,9 +1034,7 @@ footer{
 
 <div class="div-line"></div>
 
-<!-- ══════════════════════════════════════════
-     BÔNUS
-══════════════════════════════════════════ -->
+<!-- BÔNUS -->
 <section class="sec sec-darker bonus-sec">
   <div class="container">
     <div class="reveal">
@@ -930,7 +1050,6 @@ footer{
     </div>
 
     <div class="bonus-grid">
-
       <div class="bonus-card reveal">
         <div class="bonus-num">1</div>
         <div class="bonus-valor">VALOR: R$ 47</div>
@@ -943,7 +1062,6 @@ footer{
           <li>10 dúvidas frequentes respondidas</li>
         </ul>
       </div>
-
       <div class="bonus-card reveal reveal-d1">
         <div class="bonus-num">2</div>
         <div class="bonus-valor">VALOR: R$ 37</div>
@@ -956,7 +1074,6 @@ footer{
           <li>Cláusula modelo validada</li>
         </ul>
       </div>
-
       <div class="bonus-card verde reveal">
         <div class="bonus-num">3</div>
         <div class="bonus-valor">VALOR: R$ 47</div>
@@ -969,7 +1086,6 @@ footer{
           <li>Tabela resumo para usar como guia</li>
         </ul>
       </div>
-
       <div class="bonus-card roxo reveal reveal-d1">
         <div class="bonus-num">4</div>
         <div class="bonus-valor">VALOR: R$ 97</div>
@@ -982,12 +1098,11 @@ footer{
           <li>Prompts para revisão contratual</li>
         </ul>
       </div>
-
       <div class="bonus-card azul reveal" style="grid-column:1/-1">
         <div class="bonus-num">5</div>
         <div class="bonus-valor">VALOR: R$ 67</div>
         <h4>Pack de 7 Cláusulas Jurídicas — Word Editável</h4>
-        <p>O arquivo que todo empresário deveria ter antes de assinar qualquer contrato daqui pra frente. 7 modelos prontos para copiar e colar — para serviços, locação, fornecimento, contratos públicos, franquia e mais.</p>
+        <p>O arquivo que todo empresário deveria ter antes de assinar qualquer contrato daqui pra frente. 7 modelos prontos para copiar e colar.</p>
         <ul class="bonus-lista" style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">
           <li>Modelo 1 — Prestação de Serviços</li>
           <li>Modelo 2 — Locação Comercial</li>
@@ -999,10 +1114,8 @@ footer{
           <li>Checklist de qual modelo usar</li>
         </ul>
       </div>
-
     </div>
 
-    <!-- Stack de valor -->
     <div class="valor-stack reveal">
       <div class="valor-itens">
         <div class="vi"><div class="vi-label">Guia + Planilha</div><div class="vi-val">R$ 294</div></div>
@@ -1022,9 +1135,7 @@ footer{
 
 <div class="div-line"></div>
 
-<!-- ══════════════════════════════════════════
-     CTA 2
-══════════════════════════════════════════ -->
+<!-- CTA 2 -->
 <div class="cta-mid">
   <div class="container">
     <h2 class="reveal">
@@ -1038,9 +1149,61 @@ footer{
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     PARA QUEM É
-══════════════════════════════════════════ -->
+<!-- DEPOIMENTOS -->
+<section class="sec sec-dark">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag">Quem já se preparou</div>
+      <h2 class="titulo">O que dizem quem <span class="destaque">já tem o kit</span></h2>
+    </div>
+    <div class="depo-grid">
+
+      <div class="depo-card reveal">
+        <div class="depo-estrelas">★★★★★</div>
+        <div class="depo-aspas">"</div>
+        <p class="depo-texto">A planilha me mostrou que minha empresa de serviços vai pagar quase o dobro de imposto em 2027. Sem o kit eu ia descobrir isso quando já fosse tarde demais. Já renegociei todos os contratos com base nos números.</p>
+        <div class="depo-autor">
+          <div class="depo-avatar">M</div>
+          <div>
+            <div class="depo-nome">Marcos Alves</div>
+            <div class="depo-cargo">Empresário — Consultoria de TI, SP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-d1">
+        <div class="depo-estrelas">★★★★★</div>
+        <div class="depo-aspas">"</div>
+        <p class="depo-texto">Sou contador e uso o material para orientar meus clientes. O guia tem linguagem que qualquer empresário entende, e as cláusulas contratuais já salvaram dois clientes meus de assinar contratos ruins.</p>
+        <div class="depo-autor">
+          <div class="depo-avatar">C</div>
+          <div>
+            <div class="depo-nome">Carla Mendonça</div>
+            <div class="depo-cargo">Contadora — Escritório Mendonça, MG</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-d2">
+        <div class="depo-estrelas">★★★★★</div>
+        <div class="depo-aspas">"</div>
+        <p class="depo-texto">Tenho uma distribuidora e o kit mostrou que o IBS+CBS pode ser positivo pra mim com os créditos. Isso mudou completamente minha estratégia de precificação para 2027. Valeu muito mais que os R$ 197.</p>
+        <div class="depo-autor">
+          <div class="depo-avatar">R</div>
+          <div>
+            <div class="depo-nome">Roberto Fonseca</div>
+            <div class="depo-cargo">Distribuidor — Goiânia, GO</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="div-line"></div>
+
+<!-- PARA QUEM É -->
 <section class="sec sec-darker">
   <div class="container">
     <div class="reveal">
@@ -1075,26 +1238,21 @@ footer{
 
 <div class="div-line"></div>
 
-<!-- ══════════════════════════════════════════
-     OFERTA FINAL
-══════════════════════════════════════════ -->
+<!-- OFERTA FINAL -->
 <section class="oferta-sec" id="oferta">
   <div class="container">
     <div class="oferta-box reveal">
-
       <div class="oferta-topo">
         <div class="etiqueta">✓ Oferta de Lançamento — Acesso Imediato</div>
         <h2>Kit IBS e CBS<br>Reforma Tributária 2026</h2>
         <p>Guia completo + Planilha Excel + 5 Bônus exclusivos</p>
       </div>
-
       <div class="oferta-corpo">
         <div class="oferta-preco-box">
           <div class="ofp-de">Valor total dos itens: R$ 599,00</div>
           <div class="ofp-por">R$ 197</div>
           <div class="ofp-parc">ou 3× de R$ 69,00 sem juros no cartão</div>
         </div>
-
         <ul class="itens-lista">
           <li><span class="ck">✓</span><span>Guia completo — 10 capítulos, 52 páginas de conteúdo aplicável</span></li>
           <li><span class="ck">✓</span><span>Planilha Excel funcional — 7 abas, 198 fórmulas, dashboard visual</span></li>
@@ -1107,11 +1265,9 @@ footer{
           <li class="bonus"><span class="ck">🎁</span><span><b>Bônus 5:</b> Pack de 7 Cláusulas Jurídicas em Word editável (R$ 67)</span></li>
           <li><span class="ck">✓</span><span>Acesso imediato após pagamento — entrega automática pela Kiwify</span></li>
         </ul>
-
-        <a href="https://pay.kiwify.com.br/nQ7G0Ae" class="btn-primary" style="font-size:20px;padding:24px">
-          COMPRAR AGORA — R$ 197 <span class="arrow">→</span>
+        <a href="https://pay.kiwify.com.br/nQ7G0Ae" class="btn-primary checkout-btn" style="font-size:20px;padding:24px">
+          COMPRAR AGORA — ACESSO IMEDIATO <span class="arrow">→</span>
         </a>
-
         <div class="garantia-box">
           <span class="garantia-icon">🛡</span>
           <div class="garantia-txt">
@@ -1127,9 +1283,7 @@ footer{
 
 <div class="div-line"></div>
 
-<!-- ══════════════════════════════════════════
-     FAQ
-══════════════════════════════════════════ -->
+<!-- FAQ -->
 <section class="sec sec-dark">
   <div class="container" style="max-width:720px">
     <div class="reveal">
@@ -1137,54 +1291,43 @@ footer{
       <h2 class="titulo">Perguntas <span class="destaque">frequentes</span></h2>
     </div>
     <div class="faq-lista reveal">
-
       <div class="faq-item">
         <button class="faq-btn">A Reforma vai aumentar minha carga tributária?<span class="faq-icon">+</span></button>
         <div class="faq-resp">Depende do regime e segmento. Prestadores de serviços do Lucro Presumido sofrem aumento significativo. Comércio e indústria do Lucro Real com créditos amplos podem pagar menos. A planilha incluída calcula o impacto exato para o seu caso.</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-btn">Quando começa o impacto real no meu caixa?<span class="faq-icon">+</span></button>
         <div class="faq-resp">Em 2026 entram apenas alíquotas de teste mínimas (0,1% IBS + 0,9% CBS). O impacto real começa em 2027, quando o Split Payment entra em operação e as alíquotas sobem. O sistema pleno entra em 2033 após 7 anos de transição gradual.</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-btn">A planilha Excel funciona no Google Sheets?<span class="faq-icon">+</span></button>
         <div class="faq-resp">Sim. A planilha é compatível com Excel 2016 ou superior e Google Sheets. Para melhores resultados com todas as fórmulas, recomendamos o Excel. No Google Sheets, confirme que as configurações de localidade estão em Português (Brasil).</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-btn">Já tenho contador. Ainda preciso deste kit?<span class="faq-icon">+</span></button>
         <div class="faq-resp">O contador cuida do técnico. As decisões estratégicas de preço, margem, contratos e reserva de caixa são suas. Este kit te dá entendimento suficiente para cobrar as ações certas do seu contador — e para não depender de uma reunião cara para cada dúvida.</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-btn">O Simples Nacional acaba?<span class="faq-icon">+</span></button>
         <div class="faq-resp">Não. O Simples Nacional continua existindo. As alíquotas do DAS serão ajustadas para incorporar o IBS e a CBS, mas o regime simplificado permanece para micro e pequenas empresas com faturamento até R$ 4,8 milhões.</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-btn">Como os bônus são entregues?<span class="faq-icon">+</span></button>
         <div class="faq-resp">Após o pagamento confirmado, você recebe acesso imediato a tudo pela plataforma Kiwify: guia em PDF + planilha Excel + os 5 bônus (4 PDFs e 1 arquivo Word). Tudo em um único acesso, disponível para download imediato.</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-btn">Preciso ter conhecimento técnico para usar a planilha?<span class="faq-icon">+</span></button>
         <div class="faq-resp">Não. A planilha foi desenvolvida para quem não tem formação técnica em tributação. Você só preenche as células amarelas com os dados da sua empresa — o guia de instruções explica cada passo, e tudo o mais é calculado automaticamente.</div>
       </div>
-
       <div class="faq-item">
         <button class="faq-btn">Qual a garantia se eu não gostar?<span class="faq-icon">+</span></button>
         <div class="faq-resp">Garantia incondicional de 7 dias. Você acessa todo o material, usa a planilha, lê os bônus — e se não ficar satisfeito por qualquer razão, solicita o reembolso e recebe 100% do valor de volta. Sem burocracia e sem perguntas.</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     CTA FINAL
-══════════════════════════════════════════ -->
+<!-- CTA FINAL -->
 <section class="cta-final">
   <div class="container">
     <div class="cta-final-inner">
@@ -1217,20 +1360,20 @@ footer{
 
 <!-- BOTÃO FLUTUANTE -->
 <div class="float-btn" id="floatBtn">
-  <a href="https://pay.kiwify.com.br/nQ7G0Ae">Kit + 5 Bônus — R$ 197 →</a>
+  <a href="https://pay.kiwify.com.br/nQ7G0Ae" id="floatBtnLink">Kit + 5 Bônus — R$ 197 →</a>
 </div>
 
 <script>
 // ── Contador regressivo para 01/01/2027 ──────────────
 function updateTimer() {
-  const alvo = new Date('2027-01-01T00:00:00');
-  const agora = new Date();
-  const diff = alvo - agora;
+  var alvo = new Date('2027-01-01T00:00:00');
+  var agora = new Date();
+  var diff = alvo - agora;
   if (diff <= 0) return;
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
   document.getElementById('d').textContent = String(d).padStart(3,'0');
   document.getElementById('h').textContent = String(h).padStart(2,'0');
   document.getElementById('m').textContent = String(m).padStart(2,'0');
@@ -1240,24 +1383,46 @@ updateTimer();
 setInterval(updateTimer, 1000);
 
 // ── Reveal on scroll ─────────────────────────────────
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
 // ── FAQ accordion ────────────────────────────────────
-document.querySelectorAll('.faq-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    const isOpen = item.classList.contains('aberto');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('aberto'));
+document.querySelectorAll('.faq-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('aberto');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('aberto'); });
     if (!isOpen) item.classList.add('aberto');
   });
 });
 
-// ── Float button ─────────────────────────────────────
-window.addEventListener('scroll', () => {
-  document.getElementById('floatBtn').style.display = window.scrollY > 700 ? 'block' : 'none';
+// ── Sticky header ────────────────────────────────────
+var stickyHeader = document.getElementById('stickyHeader');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 600) {
+    stickyHeader.classList.add('visible');
+    document.getElementById('floatBtn').style.display = 'block';
+  } else {
+    stickyHeader.classList.remove('visible');
+    document.getElementById('floatBtn').style.display = 'none';
+  }
+});
+
+// ── InitiateCheckout tracking ────────────────────────
+document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link) {
+  link.addEventListener('click', function() {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'Kit IBS e CBS - Reforma Tributaria 2026',
+        content_ids: ['kit-ibs-cbs'],
+        content_type: 'product',
+        value: 197.00,
+        currency: 'BRL'
+      });
+    }
+  });
 });
 </script>
 </body>
