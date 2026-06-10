@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simulador da Reforma Tributária 2026: Descubra o impacto no seu caixa | Queiroz Marra</title>
+<meta name="description" content="Em 60 segundos, descubra o nível de exposição do seu negócio à Reforma Tributária (IBS/CBS). Simulador gratuito da Queiroz Marra. Diagnóstico + o que fazer antes de 2027." />
+
+<!-- ============ META PIXEL ============ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3286774244830105');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3286774244830105&ev=PageView&noscript=1"/></noscript>
+<!-- ============ /META PIXEL ============ -->
+
+<style>
+  :root{
+    --navy:#0A2342;        /* azul marca */
+    --navy-2:#0E2C54;
+    --navy-deep:#06182F;
+    --gold:#C9A961;        /* dourado marca */
+    --amber:#E8A020;       /* destaque/CTA: sinal por COR + TEXTO + ICONE (acessivel p/ daltonico) */
+    --amber-2:#F4B63E;
+    --ink:#13202E;         /* texto principal */
+    --slate:#46586B;       /* texto secundário */
+    --line:#E3E8EF;
+    --bg:#F4F6FA;
+    --white:#FFFFFF;
+    --radius:16px;
+    --shadow:0 12px 40px rgba(10,35,66,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Calibri','Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px}
+
+  /* ---------- TOPO ---------- */
+  header{
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:var(--white); padding:30px 0 38px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+    background:linear-gradient(90deg,var(--gold),var(--amber),var(--gold));}
+  .brand{font-size:14px;letter-spacing:3px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+  .tag{display:inline-block;background:rgba(232,160,32,.16);border:1px solid var(--amber);
+    color:var(--amber-2);font-weight:700;font-size:12.5px;letter-spacing:.5px;
+    padding:6px 14px;border-radius:999px;margin:14px 0 16px;text-transform:uppercase}
+  h1{font-size:27px;line-height:1.22;font-weight:800;margin:6px 0 12px}
+  h1 b{color:var(--amber-2)}
+  .sub{font-size:16.5px;color:#C7D3E2;max-width:560px;margin:0 auto}
+  .trust-mini{margin-top:18px;font-size:13px;color:#9FB1C6;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .trust-mini span{display:inline-flex;align-items:center;gap:6px}
+
+  /* ---------- SIMULADOR ---------- */
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 22px;margin:-22px auto 0;position:relative;z-index:2;
+  }
+  .step-label{font-size:12.5px;font-weight:800;letter-spacing:1.5px;color:var(--amber);text-transform:uppercase}
+  .q{font-size:18.5px;font-weight:800;margin:6px 0 16px;color:var(--navy)}
+  .opts{display:grid;gap:10px}
+  .opt{
+    display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+    border:2px solid var(--line);background:#FBFCFE;border-radius:12px;
+    padding:14px 16px;font-size:15.5px;font-weight:600;color:var(--ink);
+    cursor:pointer;transition:all .15s;font-family:inherit;
+  }
+  .opt:hover{border-color:var(--gold);background:#FFFDF6}
+  .opt.sel{border-color:var(--amber);background:#FFF7E8;box-shadow:0 0 0 3px rgba(232,160,32,.18)}
+  .opt .ico{font-size:21px;line-height:1;flex:0 0 26px;text-align:center}
+  .opt .sub2{display:block;font-size:13px;font-weight:500;color:var(--slate);margin-top:1px}
+  .progress{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin:0 0 18px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--amber));transition:width .4s}
+  .nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+  .back{background:none;border:none;color:var(--slate);font-size:14px;cursor:pointer;font-family:inherit;font-weight:600}
+  .back:hover{color:var(--navy)}
+  .count{font-size:13px;color:var(--slate);font-weight:600}
+
+  /* ---------- RESULTADO ---------- */
+  .result{display:none}
+  .gauge-wrap{text-align:center;margin:4px 0 18px}
+  .gauge{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--slate)}
+  .level{font-size:34px;font-weight:900;letter-spacing:.5px;margin:4px 0 2px;color:var(--navy)}
+  .level .badge{display:inline-block;padding:2px 14px;border-radius:10px;border:3px solid var(--navy)}
+  .bar{height:14px;border-radius:99px;background:var(--line);overflow:hidden;margin:14px 0 4px;border:1px solid var(--line)}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--amber));transition:width .8s}
+  .bar-legend{display:flex;justify-content:space-between;font-size:11.5px;color:var(--slate);font-weight:700;text-transform:uppercase}
+  .why{list-style:none;margin:18px 0 0}
+  .why li{display:flex;gap:11px;padding:11px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink)}
+  .why li .mk{flex:0 0 24px;font-size:19px;text-align:center;color:var(--amber)}
+  .why li b{color:var(--navy)}
+
+  .lock{
+    margin-top:22px;background:var(--navy);color:#fff;border-radius:14px;padding:20px 18px;text-align:center;
+  }
+  .lock h3{font-size:19px;font-weight:800;margin-bottom:6px}
+  .lock h3 .ico{color:var(--amber-2)}
+  .lock p{font-size:14.5px;color:#C7D3E2;margin-bottom:16px}
+  .field{margin-bottom:11px;text-align:left}
+  .field label{display:block;font-size:12.5px;font-weight:700;color:#9FB1C6;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+  .field input{
+    width:100%;padding:14px 15px;border-radius:11px;border:2px solid #1d3a60;
+    background:#0c2b50;color:#fff;font-size:16px;font-family:inherit;
+  }
+  .field input::placeholder{color:#7990ab}
+  .field input:focus{outline:none;border-color:var(--amber)}
+  .cta{
+    display:block;width:100%;border:none;cursor:pointer;font-family:inherit;
+    background:linear-gradient(90deg,var(--amber),var(--amber-2));color:#3a2700;
+    font-size:18px;font-weight:900;letter-spacing:.3px;padding:17px;border-radius:12px;margin-top:6px;
+    box-shadow:0 8px 22px rgba(232,160,32,.4);transition:transform .12s;
+  }
+  .cta:hover{transform:translateY(-2px)}
+  .cta:active{transform:translateY(0)}
+  .reassure{font-size:12px;color:#8aa0bb;margin-top:11px}
+
+  /* ---------- BRIDGE / OFERTA SOFT ---------- */
+  .bridge{display:none;margin:18px auto 0;text-align:center}
+  .bridge .ok{font-size:46px}
+  .bridge h2{font-size:23px;font-weight:900;color:var(--navy);margin:6px 0 8px}
+  .bridge p{font-size:16px;color:var(--slate);margin-bottom:18px}
+  .bridge .kit{
+    border:2px solid var(--gold);border-radius:14px;padding:18px;background:#FFFDF6;text-align:left;margin-bottom:16px
+  }
+  .bridge .kit .kh{font-weight:800;color:var(--navy);font-size:17px;margin-bottom:8px}
+  .bridge .kit ul{list-style:none;font-size:14.5px}
+  .bridge .kit li{padding:4px 0 4px 26px;position:relative;color:var(--ink)}
+  .bridge .kit li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:900}
+  .price{font-size:14px;color:var(--slate);margin:6px 0 2px}
+  .price s{color:#9aa7b5}
+  .price b{font-size:26px;color:var(--navy)}
+
+  /* ---------- FAIXAS DE CONFIANÇA ---------- */
+  .strip{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px;padding:22px 0}
+  .strip .wrap{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;text-align:center}
+  .strip .it{font-size:13.5px;color:var(--slate);font-weight:600;display:flex;align-items:center;gap:7px}
+  .strip .it b{color:var(--navy)}
+  footer{background:var(--navy-deep);color:#8ca0b8;text-align:center;padding:26px 18px;font-size:12.5px;line-height:1.7;margin-top:0}
+  footer .fb{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:13px}
+  footer a{color:var(--gold);text-decoration:none}
+
+  @media(max-width:480px){
+    h1{font-size:23px}.q{font-size:17px}.level{font-size:29px}
+    .card{padding:22px 16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Queiroz Marra · Consultoria</div>
+    <span class="tag">⏱ Leva 60 segundos · 100% grátis</span>
+    <h1>Quanto a <b>Reforma Tributária</b> vai pesar no caixa da sua empresa em 2026?</h1>
+    <p class="sub">Responda 3 perguntas e receba na hora o <b>nível de exposição</b> do seu negócio ao IBS e CBS, e o que fazer antes de 2027.</p>
+    <div class="trust-mini">
+      <span>🛡 Sem custo</span>
+      <span>🔒 Sem pegadinha</span>
+      <span>📊 Baseado na LC 214/2025</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+
+    <!-- SIMULADOR -->
+    <div id="sim">
+      <div class="progress"><i id="bar"></i></div>
+
+      <!-- P1 -->
+      <div class="q-step" data-step="0">
+        <div class="step-label">Pergunta 1 de 3</div>
+        <div class="q">Qual o regime tributário da sua empresa?</div>
+        <div class="opts">
+          <button class="opt" data-k="regime" data-v="simples"><span class="ico">🏪</span><span>Simples Nacional<span class="sub2">MEI, micro e pequena empresa</span></span></button>
+          <button class="opt" data-k="regime" data-v="presumido"><span class="ico">🏢</span><span>Lucro Presumido<span class="sub2">Faturamento até R$ 78 mi/ano</span></span></button>
+          <button class="opt" data-k="regime" data-v="real"><span class="ico">🏛️</span><span>Lucro Real<span class="sub2">Grande empresa / obrigatório por lei</span></span></button>
+          <button class="opt" data-k="regime" data-v="naosei"><span class="ico">❓</span><span>Não tenho certeza<span class="sub2">Tudo bem, calculo pelo cenário mais comum</span></span></button>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="q-step" data-step="1" style="display:none">
+        <div class="step-label">Pergunta 2 de 3</div>
+        <div class="q">O que sua empresa faz, principalmente?</div>
+        <div class="opts">
+          <button class="opt" data-k="setor" data-v="servicos"><span class="ico">🛠️</span><span>Serviços<span class="sub2">Consultoria, saúde, educação, TI, oficinas…</span></span></button>
+          <button class="opt" data-k="setor" data-v="comercio"><span class="ico">🛒</span><span>Comércio<span class="sub2">Loja, revenda, atacado, varejo</span></span></button>
+          <button class="opt" data-k="setor" data-v="industria"><span class="ico">🏭</span><span>Indústria / Produção<span class="sub2">Fabricação, transformação, agro</span></span></button>
+          <button class="opt" data-k="setor" data-v="misto"><span class="ico">🔀</span><span>Um pouco de cada<span class="sub2">Vendo produto e presto serviço</span></span></button>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="q-step" data-step="2" style="display:none">
+        <div class="step-label">Pergunta 3 de 3</div>
+        <div class="q">Você vende mais para…</div>
+        <div class="opts">
+          <button class="opt" data-k="cliente" data-v="b2b"><span class="ico">🤝</span><span>Outras empresas (CNPJ)<span class="sub2">Meus clientes são empresas</span></span></button>
+          <button class="opt" data-k="cliente" data-v="b2c"><span class="ico">🧑</span><span>Consumidor final (pessoa física)<span class="sub2">Vendo direto pro cliente</span></span></button>
+          <button class="opt" data-k="cliente" data-v="ambos"><span class="ico">⚖️</span><span>Os dois<span class="sub2">Empresas e pessoas físicas</span></span></button>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="back" id="back" style="visibility:hidden">← Voltar</button>
+        <span class="count" id="count">1 / 3</span>
+      </div>
+    </div>
+
+    <!-- RESULTADO -->
+    <div id="result" class="result">
+      <div class="gauge-wrap">
+        <div class="gauge">Nível de exposição do seu negócio</div>
+        <div class="level"><span class="badge" id="lvlBadge">ALTA</span></div>
+      </div>
+      <div class="bar"><i id="riskBar"></i></div>
+      <div class="bar-legend"><span>Baixa</span><span>Moderada</span><span>Alta</span></div>
+
+      <ul class="why" id="whyList"></ul>
+
+      <!-- CAPTURA -->
+      <div class="lock">
+        <h3><span class="ico">🔓</span> Seu diagnóstico completo está pronto</h3>
+        <p>Quero te mandar o <b>relatório detalhado do seu caso</b> + o passo a passo do que fazer antes de 2027. Pra onde envio?</p>
+        <form id="leadForm" autocomplete="on">
+          <div class="field">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Como posso te chamar?" required />
+          </div>
+          <div class="field">
+            <label for="whats">WhatsApp (com DDD)</label>
+            <input type="tel" id="whats" name="whats" placeholder="(62) 90000-0000" required />
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com.br" required />
+          </div>
+          <button type="submit" class="cta">QUERO MEU DIAGNÓSTICO COMPLETO →</button>
+          <p class="reassure">🔒 Seus dados estão seguros. Sem spam. Você recebe o material e dicas práticas da reforma.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- BRIDGE (pós-captura) -->
+    <div id="bridge" class="bridge">
+      <div class="ok">✅</div>
+      <h2>Prontinho! Já estou te enviando.</h2>
+      <p>Seu diagnóstico está a caminho do seu WhatsApp. Enquanto isso, dá uma olhada no que preparei pra você não ser pego de surpresa:</p>
+      <div class="kit">
+        <div class="kh">Kit IBS &amp; CBS 2026: Reforma na Prática</div>
+        <ul>
+          <li>Guia completo (52 páginas, 8 casos reais)</li>
+          <li>Planilha que calcula seu novo preço e imposto</li>
+          <li>5 bônus: calculadora, checklist, cláusulas jurídicas e +</li>
+          <li>Garantia de 7 dias, risco zero</li>
+        </ul>
+        <div class="price"><s>De R$ 599</s> &nbsp;por&nbsp; <b>R$ 197</b> &nbsp;<span style="font-size:13px">ou 3× R$ 69</span></div>
+      </div>
+      <a class="cta" id="kitBtn" href="/" style="text-decoration:none;display:block">VER O KIT COMPLETO →</a>
+      <p class="reassure" style="color:var(--slate)">Sem pressa: o diagnóstico que você pediu já está indo pro seu WhatsApp de qualquer forma.</p>
+    </div>
+
+  </div>
+</main>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="it">👥 <b>+200</b> empresários e contadores já se prepararam</div>
+    <div class="it">📜 Material baseado na <b>LC 214/2025</b></div>
+    <div class="it">🛡 <b>Garantia</b> de 7 dias no Kit</div>
+  </div>
+</div>
+
+<footer>
+  <div class="fb">QUEIROZ MARRA</div>
+  Consultoria empresarial e tributária<br/>
+  Este simulador é uma estimativa educativa de exposição, baseada na Lei Complementar 214/2025. Não substitui análise contábil individual.<br/>
+  © 2026 Queiroz Marra. Todos os direitos reservados.
+</footer>
+
+<script>
+/* ===================== ESTADO ===================== */
+var answers = { regime:null, setor:null, cliente:null };
+var step = 0;
+var totalSteps = 3;
+
+/* >>>>>>>>>>> CONFIGURAR: WhatsApp da Jéssica/QM (só números, com 55 + DDD) <<<<<<<<<<< */
+var WHATSAPP_QM = "5562991140704"; // WhatsApp QM (Jessica)
+/* >>>>>>>>>>> CONFIGURAR: endpoint opcional de lista (Systeme.io/Formspree). Deixe vazio se usar so WhatsApp <<<<<<<<<<< */
+var LEAD_ENDPOINT = ""; // ex.: "https://formspree.io/f/xxxx"
+
+var steps = document.querySelectorAll('.q-step');
+var bar = document.getElementById('bar');
+var countEl = document.getElementById('count');
+var backBtn = document.getElementById('back');
+
+function render(){
+  steps.forEach(function(s,i){ s.style.display = (i===step)?'block':'none'; });
+  bar.style.width = ((step)/totalSteps*100) + '%';
+  countEl.textContent = (step+1) + ' / ' + totalSteps;
+  backBtn.style.visibility = step===0 ? 'hidden' : 'visible';
+  // marca opção já escolhida
+  var k = ['regime','setor','cliente'][step];
+  document.querySelectorAll('.q-step[data-step="'+step+'"] .opt').forEach(function(b){
+    b.classList.toggle('sel', answers[k]===b.dataset.v);
+  });
+}
+
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    answers[this.dataset.k] = this.dataset.v;
+    var sib = this.parentNode.querySelectorAll('.opt');
+    sib.forEach(function(b){ b.classList.remove('sel'); });
+    this.classList.add('sel');
+    setTimeout(function(){
+      if(step < totalSteps-1){ step++; render(); }
+      else { showResult(); }
+    }, 220);
+  });
+});
+
+backBtn.addEventListener('click', function(){ if(step>0){ step--; render(); } });
+
+/* ===================== LÓGICA DE RISCO ===================== */
+function scoreCase(a){
+  var score = 40; // base
+  // Serviços sofrem mais (alíquota cheia ~26-28% vs ISS+PIS/COFINS, poucos créditos)
+  if(a.setor==='servicos') score += 30;
+  if(a.setor==='misto') score += 18;
+  if(a.setor==='comercio') score += 8;
+  if(a.setor==='industria') score += 6;
+  // Simples vendendo p/ empresa: cliente perde crédito -> pressão competitiva
+  if(a.regime==='simples' && (a.cliente==='b2b'||a.cliente==='ambos')) score += 22;
+  if(a.regime==='presumido') score += 12;
+  if(a.regime==='real') score += 4;
+  if(a.regime==='naosei') score += 10;
+  // B2B exige recalcular crédito; B2C sente repasse de preço
+  if(a.cliente==='b2b') score += 6;
+  if(a.cliente==='b2c') score += 4;
+  if(score>97) score=97;
+  if(score<30) score=30;
+  return score;
+}
+
+function buildWhy(a){
+  var L = [];
+  if(a.setor==='servicos' || a.setor==='misto'){
+    L.push(["⚠️","<b>Setor de serviços é o mais impactado.</b> A alíquota cheia de IBS+CBS (~26%) pode ser muito maior que o que você paga hoje de ISS + PIS/COFINS, e serviço tem poucos créditos pra abater."]);
+  }
+  if(a.regime==='simples' && (a.cliente==='b2b'||a.cliente==='ambos')){
+    L.push(["⚠️","<b>Você está no Simples e vende para empresas.</b> Seus clientes podem deixar de aproveitar crédito cheio na sua nota, e isso pode te tornar mais caro que o concorrente. Decisão de ficar ou sair do Simples vira estratégica."]);
+  }
+  if(a.regime==='presumido'){
+    L.push(["⚠️","<b>Lucro Presumido muda de figura.</b> Sua conta de imposto passa a depender de créditos sobre o que você compra, e quem não recalcular pode pagar mais sem perceber."]);
+  }
+  if(a.cliente==='b2c' || a.cliente==='ambos'){
+    L.push(["⚠️","<b>Vendendo pro consumidor final,</b> o imposto entra no preço de prateleira. Se não recalcular já, ou some sua margem ou seu produto fica caro demais."]);
+  }
+  L.push(["⏳","<b>Split Payment chegando:</b> parte do imposto será retida automaticamente no pagamento. Isso muda o seu fluxo de caixa, e a empresa que não se preparar sente no bolso."]);
+  L.push(["🧭","<b>O que fazer:</b> recalcular preços, revisar contratos com prazo além de 2027 e mapear seus créditos. Quem fizer isso primeiro larga na frente."]);
+  return L.slice(0,4);
+}
+
+function showResult(){
+  var s = scoreCase(answers);
+  var level = s>=70 ? 'ALTA' : (s>=50 ? 'MODERADA' : 'BAIXA');
+  document.getElementById('lvlBadge').textContent = level;
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('sim').style.display = 'none';
+  bar.style.width = '100%';
+  setTimeout(function(){ document.getElementById('riskBar').style.width = s + '%'; }, 120);
+
+  var ul = document.getElementById('whyList');
+  ul.innerHTML = '';
+  buildWhy(answers).forEach(function(item){
+    var li = document.createElement('li');
+    li.innerHTML = '<span class="mk">'+item[0]+'</span><span>'+item[1]+'</span>';
+    ul.appendChild(li);
+  });
+
+  // Pixel: o lead esquentou, evento de conteudo qualificado
+  if(window.fbq){ fbq('track','ViewContent',{content_name:'Simulador Reforma - Resultado '+level}); }
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+
+/* ===================== CAPTURA ===================== */
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var nome = document.getElementById('nome').value.trim();
+  var whats = document.getElementById('whats').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var s = scoreCase(answers);
+  var level = s>=70 ? 'ALTA' : (s>=50 ? 'MODERADA' : 'BAIXA');
+
+  var resumo = "Regime: "+(answers.regime||'-')+" | Setor: "+(answers.setor||'-')+" | Vende p/: "+(answers.cliente||'-')+" | Exposição: "+level;
+
+  // Pixel: LEAD capturado
+  if(window.fbq){ fbq('track','Lead',{content_name:'Simulador Reforma', value:0, currency:'BRL'}); }
+
+  // (opcional) manda pra lista/CRM se houver endpoint
+  if(LEAD_ENDPOINT){
+    try{
+      fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({nome:nome,whatsapp:whats,email:email,diagnostico:resumo})});
+    }catch(err){}
+  }
+
+  // mostra bridge
+  document.getElementById('result').style.display='none';
+  document.getElementById('bridge').style.display='block';
+  document.getElementById('bridge').scrollIntoView({behavior:'smooth'});
+
+  // abre WhatsApp pré-preenchido (a lista vira contatos no WhatsApp da QM)
+  var msg = "Olá! Sou "+nome+" e fiz o Simulador da Reforma no site da Queiroz Marra. "
+          + "Quero meu diagnóstico completo. Meus dados: "+resumo+" | E-mail: "+email;
+  var url = "https://wa.me/"+WHATSAPP_QM+"?text="+encodeURIComponent(msg);
+  setTimeout(function(){ window.open(url,'_blank'); }, 600);
+});
+
+render();
+</script>
+</body>
+</html>
