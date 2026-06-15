@@ -15,7 +15,7 @@ fbq('track', 'ViewContent', {
   content_category: 'curso',
   content_ids: ['kit-ibs-cbs'],
   content_type: 'product',
-  value: 197.00,
+  value: 27.00,
   currency: 'BRL'
 });
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
           content_name: 'Kit IBS e CBS - Reforma Tributaria 2026',
           content_ids: ['kit-ibs-cbs'],
           content_type: 'product',
-          value: 197.00,
+          value: 27.00,
           currency: 'BRL'
         });
       }
