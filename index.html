@@ -1422,17 +1422,34 @@ window.addEventListener('scroll', function() {
   }
 });
 
-// ── fbclid passthrough: liga clique do anuncio a compra no Kiwify ──
+// ── fbclid/_fbc passthrough: garante atribuicao da campanha no checkout Kiwify ──
 (function() {
-  var p = new URLSearchParams(window.location.search);
-  var fbclid = p.get('fbclid');
-  if (fbclid) {
+  function getFbclid() {
+    var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    if (fbclid) return fbclid;
+    // se nao veio na URL (ex: navegou de /diagnostico pra ca), reconstroi do cookie _fbc
+    var m = document.cookie.match(/_fbc=fb\.1\.\d+\.([^;]+)/);
+    return m ? m[1] : null;
+  }
+  function applyToCheckout() {
+    var fbclid = getFbclid();
+    if (!fbclid) return;
     document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link) {
-      var url = new URL(link.href);
-      url.searchParams.set('fbclid', fbclid);
-      link.href = url.toString();
+      try {
+        var url = new URL(link.href);
+        if (!url.searchParams.get('fbclid')) {
+          url.searchParams.set('fbclid', fbclid);
+          link.href = url.toString();
+        }
+      } catch (e) {}
     });
   }
+  applyToCheckout();
+  // reaplica no clique: cobre cookie setado tarde e botoes adicionados depois
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest ? e.target.closest('a[href*="pay.kiwify.com.br"]') : null;
+    if (a) applyToCheckout();
+  }, true);
 })();
 
 // ── InitiateCheckout tracking ────────────────────────
