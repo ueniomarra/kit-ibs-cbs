@@ -1422,6 +1422,19 @@ window.addEventListener('scroll', function() {
   }
 });
 
+// ── fbclid passthrough: liga clique do anuncio a compra no Kiwify ──
+(function() {
+  var p = new URLSearchParams(window.location.search);
+  var fbclid = p.get('fbclid');
+  if (fbclid) {
+    document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link) {
+      var url = new URL(link.href);
+      url.searchParams.set('fbclid', fbclid);
+      link.href = url.toString();
+    });
+  }
+})();
+
 // ── InitiateCheckout tracking ────────────────────────
 document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link) {
   link.addEventListener('click', function() {
