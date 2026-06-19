@@ -1428,7 +1428,7 @@ window.addEventListener('scroll', function() {
     var fbclid = new URLSearchParams(window.location.search).get('fbclid');
     if (fbclid) return fbclid;
     // se nao veio na URL (ex: navegou de /diagnostico pra ca), reconstroi do cookie _fbc
-    var m = document.cookie.match(/_fbc=fb\.1\.\d+\.([^;]+)/);
+    var m = document.cookie.match(/_fbc=fb\.\d+\.\d+\.([^;]+)/);
     return m ? m[1] : null;
   }
   function applyToCheckout() {
